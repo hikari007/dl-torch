@@ -1,6 +1,4 @@
-from cProfile import label
 import torch
-from zmq import device
 from model import LeNet
 import torchvision.transforms as transforms
 from PIL import Image
@@ -33,7 +31,7 @@ model = LeNet().to(dev)
 model.load_state_dict(torch.load('LeNet.pth'))
 
 # 测试
-img = Image.open('cat.jpg')
+img = Image.open('plane.png')
 img = transform(img)   # (H, W, C) -> (C, H, W)
 img = img.to(dev)
 img = torch.unsqueeze(img, dim=0)      # 增加batch维度
@@ -43,8 +41,3 @@ with torch.no_grad():
     predict = torch.softmax(outputs, dim=1)
     pred_cls = torch.max(predict, dim=1)[1].data.cpu().numpy()
 print(classes[int(pred_cls)], predict[0][pred_cls].item())
-    
-
-
-
-
