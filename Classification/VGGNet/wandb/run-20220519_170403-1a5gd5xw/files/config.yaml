@@ -1,0 +1,42 @@
+wandb_version: 1
+
+_wandb:
+  desc: null
+  value:
+    cli_version: 0.12.15
+    framework: torch
+    is_jupyter_run: false
+    is_kaggle_kernel: false
+    python_version: 3.8.13
+    start_time: 1652951043
+    t:
+      1:
+      - 1
+      - 41
+      - 55
+      2:
+      - 1
+      - 41
+      - 55
+      3:
+      - 13
+      - 16
+      4: 3.8.13
+      5: 0.12.15
+      8:
+      - 5
+batch_size:
+  desc: null
+  value: 8
+epochs:
+  desc: null
+  value: 10
+model:
+  desc: null
+  value: vgg16
+num_workers:
+  desc: null
+  value: 8
+save_path:
+  desc: null
+  value: ./save_weights
