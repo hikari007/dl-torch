@@ -71,7 +71,7 @@ class Bottleneck(nn.Module):
         self.bn1 = nn.BatchNorm2d(out_channel)
         
         self.conv2 = nn.Conv2d(out_channel, out_channel, kernel_size=3,
-                               stride=stride, bias=False)
+                               stride=stride, padding=1, bias=False)
         self.bn2 = nn.BatchNorm2d(out_channel)
         
         self.conv3 = nn.Conv2d(out_channel, out_channel * self.expansion, 

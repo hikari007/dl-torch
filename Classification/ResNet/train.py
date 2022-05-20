@@ -13,7 +13,7 @@ from torch import optim
 import sys
 
 def create_model(model_name, num_cls=1000):
-    assert model_name in ['resnet18', 'resnet34', 'resnet50', 'resnet101', 'resnet151'], 'Undefined model {}'.format(model_name)
+    assert model_name in ['resnet18', 'resnet34', 'resnet50', 'resnet101', 'resnet152'], 'Undefined model {}'.format(model_name)
     return model.__dict__[model_name](num_cls, True)
 
 def main(args):
@@ -106,7 +106,7 @@ def main(args):
         model.eval()    # 不使用BN
         acc = 0.0
         val_bar = tqdm(val_loader, file=sys.stdout)
-        for val_data in val_loader:
+        for val_data in val_bar:
             val_images, val_labels = val_data
             with torch.no_grad():
                 outputs = model(val_images.to(device))
@@ -132,7 +132,7 @@ if __name__ == '__main__':
     parser.add_argument('--epochs', default=50, type=int, help='training epochs')
     parser.add_argument('--save_path', default='./save_weights', type=str, help='path to save model')
     parser.add_argument('--batch_size', default=8, type=int, help='batch size')
-    parser.add_argument('--model_name', default='resnet18', type=str, help='model name')
+    parser.add_argument('--model_name', default='resnet50', type=str, help='model name')
     parser.add_argument('--data_root', default='/common/Dataset/flower_data', type=str, help='dataset path')
     parser.add_argument('--num_workers', default=8, type=int, help='workers use to load data')
     
